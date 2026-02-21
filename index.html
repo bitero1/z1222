@@ -1,105 +1,427 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>برای زهرا</title>
-  <style>
-    body {
-      margin:0; 
-      background:linear-gradient(180deg,#071021 0%, #0b1220 60%); 
-      color:#e6eef6; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      padding:24px;
-      font-family:"Vazirmatn", sans-serif;
-    }
-    .card {
-      max-width:800px;
-      background:rgba(255,255,255,0.03);
-      border-radius:14px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.6);
-      padding:30px;
-      text-align:center;
-    }
-    h1 {font-size:28px; margin:0 0 10px;}
-    p.lead {color:#9aa4b2; margin:0 0 20px;}
-    .compliment-box {
-      margin-top:18px; 
-      background:rgba(255,255,255,0.05); 
-      padding:14px; 
-      border-radius:10px;
-      min-height:60px;
-    }
-    button {
-      margin-top:15px;
-      padding:10px 18px;
-      border:none;
-      border-radius:10px;
-      background:linear-gradient(90deg,#e11d48,#ff6b8a);
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
-    }
-    img {
-      max-width:100%;
-      border-radius:12px;
-      margin-top:20px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.5);
-    }
-    footer {margin-top:20px; font-size:13px; color:#9aa4b2;}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منوی کافه | نیم |  مینیمال </title>
+    <!-- فونت وزیرمتن و آیکون‌های فون‌اووسام -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===== reset & base ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== variables ===== */
+        :root {
+            --royal-green-dark: #1a3b2e;      /* سبز سلطنتی تیره */
+            --royal-green-medium: #2b5e4b;    /* سبز سلطنتی متوسط */
+            --royal-green-light: #3f7864;     /* سبز سلطنتی روشن‌تر */
+            --royal-green-soft: #e1f0e9;      /* سبز خیلی روشن برای پس‌زمینه */
+            --accent-gold: #d4af37;            /* طلایی برای کنتراست */
+            --bg-cream: #fafaf8;                /* کرم طبیعی */
+            --text-dark: #1e2b26;
+            --text-soft: #3a4a43;
+            --border-light: #c0d9cf;
+            --shadow-elegant: 0 15px 40px -12px rgba(20, 60, 40, 0.25);
+            --card-bg: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            position: relative;
+            /* تم سبز سلطنتی با بافت بسیار ظریف */
+            background-image: 
+                radial-gradient(circle at 5% 15%, rgba(43, 94, 75, 0.12) 0%, transparent 28%),
+                radial-gradient(circle at 95% 80%, rgba(26, 59, 46, 0.1) 0%, transparent 35%),
+                repeating-linear-gradient(135deg, rgba(26, 59, 46, 0.02) 0px, rgba(26, 59, 46, 0.02) 2px, transparent 2px, transparent 8px);
+            min-height: 100vh;
+        }
+
+        /* لایه شفاف روی بک‌گراند برای افزایش خوانایی */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(250, 250, 245, 0.4);
+            backdrop-filter: blur(1.2px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* ===== header ===== */
+        header {
+            text-align: center;
+            padding: 28px 20px 18px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--royal-green-medium);
+            transition: all 0.3s;
+            box-shadow: var(--shadow-elegant);
+        }
+
+        /* کانتینر هدر برای قرارگیری عنوان و دکمه در یک خط */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        h1 {
+            font-weight: 650;
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+            color: var(--royal-green-dark);
+            border-bottom: 3px double var(--accent-gold);
+            padding-bottom: 5px;
+            display: inline-block;
+            margin: 0;
+        }
+
+        /* بخش جدید مارو فالوو کن - گوشه هدر */
+        .follow-section {
+            font-size: 1rem;
+            color: var(--royal-green-dark);
+            background: rgba(212, 175, 55, 0.15);
+            padding: 8px 18px;
+            border-radius: 40px;
+            border: 1.5px solid var(--accent-gold);
+            backdrop-filter: blur(2px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .follow-section:hover {
+            background: var(--accent-gold);
+            color: var(--royal-green-dark);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .follow-section i {
+            color: var(--royal-green-dark);
+            font-size: 1.1rem;
+        }
+
+        .follow-section:hover i {
+            color: var(--royal-green-dark);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px 25px;
+            margin: 15px 0 5px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-soft);
+            font-size: 1rem;
+            font-weight: 450;
+            padding: 6px 4px;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav a i {
+            color: var(--royal-green-medium);
+            font-size: 0.95rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--royal-green-dark);
+            border-bottom-color: var(--accent-gold);
+            font-weight: 550;
+        }
+
+        /* ===== main container ===== */
+        main {
+            max-width: 780px;
+            margin: 30px auto 60px;
+            padding: 15px 30px 45px;
+            background: var(--card-bg);
+            backdrop-filter: blur(4px);
+            border-radius: 60px 60px 40px 40px;
+            box-shadow: var(--shadow-elegant);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        /* ===== sections ===== */
+        section {
+            margin-bottom: 65px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUpRoyal 0.7s forwards;
+        }
+
+        @keyframes fadeUpRoyal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .category-title {
+            font-size: 2rem;
+            font-weight: 350;
+            margin-bottom: 25px;
+            padding-right: 25px;
+            border-right: 6px solid var(--royal-green-dark);
+            color: var(--royal-green-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-title i {
+            color: var(--accent-gold);
+            font-size: 2rem;
+            opacity: 0.85;
+        }
+
+        /* ===== menu items ===== */
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px dashed var(--royal-green-light);
+            transition: 0.2s;
+        }
+
+        .menu-item:hover {
+            background: rgba(43, 94, 75, 0.06);
+            padding-right: 14px;
+            border-radius: 0 28px 28px 0;
+        }
+
+        .item-details {
+            flex: 1;
+            padding-left: 18px;
+        }
+
+        .item-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--royal-green-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .item-name i {
+            color: var(--royal-green-medium);
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: #4d655b;
+            font-weight: 320;
+            margin-top: 5px;
+            letter-spacing: 0.2px;
+        }
+
+        .item-price {
+            font-weight: 650;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            background: rgba(26, 59, 46, 0.07);
+            padding: 5px 16px;
+            border-radius: 40px;
+            color: var(--royal-green-dark);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .currency {
+            font-size: 0.65rem;
+            font-weight: 320;
+            margin-right: 5px;
+            color: #5b7669;
+        }
+
+        /* ===== responsive ===== */
+        @media (max-width: 650px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            h1 { font-size: 2rem; }
+        }
+
+        @media (max-width: 550px) {
+            main { padding: 10px 18px 30px; border-radius: 40px; }
+            .menu-item { flex-direction: column; align-items: flex-start; }
+            .item-price { margin-top: 8px; align-self: flex-end; }
+            .category-title { font-size: 1.7rem; }
+            nav ul { gap: 8px 15px; }
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <h1>سلام زهرا ❤️</h1>
-    <p class="lead">این صفحه فقط برای تو درست شده، پر از حرفایی که دلم می‌خواست بگم.</p>
 
-    <div class="compliment-box" id="compliment">
-      زهرا، تو دلیل لبخندای بی‌دلیل منی.
+<!-- ========== header ========== -->
+<header id="main-header">
+    <div class="header-container">
+        <h1>NIM</h1>
+        
+        <!-- بخش مارو فالوو کن - گوشه هدر با لینک اینستاگرام -->
+        <a href="https://www.instagram.com/" target="_blank" class="follow-section">
+            <i class="fab fa-instagram"></i> مارو فالوو کن <i class="fas fa-heart"></i>
+        </a>
     </div>
-    <button id="gen">یه جمله دیگه</button>
 
-    <!-- عکس پیش‌فرض: می‌تونی لینکشو عوض کنی -->
-    <img id="heroPhoto" src="https://github.com/bitero1/z1222/blob/main/IMG_4210.png" alt="عکس زهرا" />
+    <nav>
+        <ul>
+            <li><a onclick="scrollToSection('hot-coffee')"><i class="fas fa-fire"></i> بار گرم</a></li>
+            <li><a onclick="scrollToSection('cold-coffee')"><i class="fas fa-snowflake"></i> بار سرد</a></li>
+            <li><a onclick="scrollToSection('tea')"><i class="fas fa-leaf"></i> دمنوش</a></li>
+            <li><a onclick="scrollToSection('cakes')"><i class="fas fa-cake-candles"></i> کیک و شیک</a></li>
+            <li><a onclick="scrollToSection('breakfast')"><i class="fas fa-egg"></i> صبحانه</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <footer>همهٔ اینا فقط برای توست زهرا 💫</footer>
-  </div>
+<!-- ========== main menu ========== -->
+<main>
+    <!-- bar گرم -->
+    <section id="hot-coffee">
+        <h2 class="category-title"><i class="fas fa-mug-hot"></i> بار گرم</h2>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-seedling"></i> اسپرسو (تک / دبل)</span><p class="item-desc">روبستا 70/30</p></div><div class="item-price">80/90 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-seedling"></i> اسپرسو (تک / دبل)</span><p class="item-desc">عربیکا 80/20</p></div><div class="item-price">110/130 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-water"></i> آمریکانو</span><p class="item-desc">اسپرسو دبل شات + آب داغ</p></div><div class="item-price">90/130 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-whiskey-glass"></i> کاپوچینو</span><p class="item-desc">اسپرسو، شیر بخار داده شده، فوم شیر</p></div><div class="item-price">120/150 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-mug-saucer"></i> لته</span><p class="item-desc">ترکیب ملایم اسپرسو و شیر زیاد</p></div><div class="item-price">130/170 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-candy-cane"></i> کارامل ماکیاتو</span><p class="item-desc">اسپرسو، شیر، سیروپ وانیل و کارامل</p></div><div class="item-price">190 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-chocolate"></i> موکا</span><p class="item-desc">سس شکلات + قهوه + شیر</p></div><div class="item-price">180 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-chocolate"></i> موکاتلا</span><p class="item-desc">نوتلا + قهوه + شیر</p></div><div class="item-price">200 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-cup"></i> کورتادو</span><p class="item-desc">قهوه + شیر</p></div><div class="item-price">110/130 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-mug-hot"></i> هات چاکلت</span><p class="item-desc">پودر هات‌چاکلت + شیر</p></div><div class="item-price">180 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-heart"></i> پینک چاکلت</span><p class="item-desc">پودر پینک چاکلت + شیر</p></div><div class="item-price">180 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-chocolate"></i> هات نوتلا</span><p class="item-desc">نوتلا + شیر</p></div><div class="item-price">200 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-cookie"></i> هات لوتوس</span><p class="item-desc">کره بیسکویت لوتوس + شیر</p></div><div class="item-price">200 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-jar"></i> شیر عسل</span><p class="item-desc">عسل + شیر</p></div><div class="item-price">120 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-jar"></i> شیر عسل دارچین</span><p class="item-desc">دارچین + عسل + شیر</p></div><div class="item-price">130 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name"><i class="fas fa-jar"></i> شیر عسل زعفران</span><p class="item-desc">زعفران + عسل + شیر</p></div><div class="item-price">150 <span class="currency">هزار تومان</span></div></div>
+    </section>
 
-  <script>
-    const compliments = [
-      'زهرا، وقتی می‌خندی انگار همه دنیا روشن می‌شه.',
-      'صدای تو مثل یه ملودی قشنگه که هیچ‌وقت از ذهنم پاک نمی‌شه.',
-      'با تو بودن یعنی هر روزم خاص‌تر می‌شه.',
-      'چشمات یه دنیای جدیده که دوست دارم توش گم بشم.',
-      'حضور تو آرامش محضه.',
-      'تو دلیل لبخندای بی‌دلیل منی.',
-      'بودنت مثل بهار همیشگیه.',
-      'لبخندت مثل طلوع خورشید همه‌جا رو گرم می‌کنه.',
-      'بودنت مثل شعریه که هیچ‌وقت تکراری نمی‌شه.',
-      'هر بار چشماتو می‌بینم، انگار کل دنیا رو دوباره کشف می‌کنم.',
-      'تو زیباترین رویای منی که واقعی شدی.',
-      'وقتی دستاتو می‌گیرم همه‌چی درست می‌شه.',
-      'هر بار صداتو می‌شنوم، دلم آروم می‌گیره.',
-      'تو رنگین‌کمان زندگی منی.',
-      'حتی سکوتت هم قشنگ‌ترین موسیقی دنیاست.',
-      'هر روزی که می‌گذره بیشتر عاشقت می‌شم.',
-      'تو بهترین هدیه‌ی خدایی.',
-      'با تو بودن یعنی بی‌نهایت خوشبختی.',
-      'نگاهت مثل یک نقشهٔ جادویی منو راهنمایی می‌کنه.',
-      'صدای خندیدنت انرژی روزمو می‌سازه.',
-      'تو تاج خوشحالی منی.',
-      'بودنت دلیل آرامش قلبمه.',
-      'کنارت بودن یعنی آرامش مطلق.',
-      'زهرا جان، دنیا بدون تو کامل نیست.'
-    ];
+    <!-- bar سرد -->
+    <section id="cold-coffee">
+        <h2 class="category-title"><i class="fas fa-ice-cream"></i> بار سرد</h2>
+        <div class="menu-item"><div class="item-details"><span class="item-name">آیس آمریکانو</span><p class="item-desc">اسپرسو، آب سرد، یخ</p></div><div class="item-price">100/140 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">آیس لته</span><p class="item-desc">شیر سرد، یخ، اسپرسو</p></div><div class="item-price">140/180 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">آیس موکا</span><p class="item-desc"></p></div><div class="item-price">190 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">آفوگاتو</span><p class="item-desc">یک اسکوپ بستنی + اسپرسو</p></div><div class="item-price">140 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">آیس کارامل ماکیاتو</span><p class="item-desc"></p></div><div class="item-price">200 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">آیس لوتوس</span><p class="item-desc"></p></div><div class="item-price">210 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">آیس اورنجی کانو</span><p class="item-desc"></p></div><div class="item-price">210 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">لیموناد</span><p class="item-desc"></p></div><div class="item-price">130 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">موهیتو</span><p class="item-desc"></p></div><div class="item-price">140 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">رد موهیتو</span><p class="item-desc"></p></div><div class="item-price">200 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">بلو موهیتو</span><p class="item-desc"></p></div><div class="item-price">200 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">پینک مون</span><p class="item-desc"></p></div><div class="item-price">230 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">لیدی مری</span><p class="item-desc"></p></div><div class="item-price">230 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">سان ست</span><p class="item-desc"></p></div><div class="item-price">230 <span class="currency">هزار تومان</span></div></div>
+    </section>
 
-    document.getElementById('gen').addEventListener('click', () => {
-      const comp = compliments[Math.floor(Math.random() * compliments.length)];
-      document.getElementById('compliment').textContent = comp;
+    <!-- دمنوش -->
+    <section id="tea">
+        <h2 class="category-title"><i class="fas fa-leaf"></i> دمنوش</h2>
+        <div class="menu-item"><div class="item-details"><span class="item-name">چای سیاه دمی</span><p class="item-desc"></p></div><div class="item-price">50 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">چای ماسالا</span><p class="item-desc">ترکیب ادویه‌های هندی و شیر</p></div><div class="item-price">120 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">دمنوش آرامش</span><p class="item-desc">گل‌گاوزبان، اسطوخودوس، به لیمو</p></div><div class="item-price">120 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">چای سبز</span><p class="item-desc">آنتی اکسیدان بالا</p></div><div class="item-price">80 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">چای مراکشی</span><p class="item-desc">چای سبز، نعنا، به لیمو</p></div><div class="item-price">120 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">چای ویژه </span><p class="item-desc">هل، دارچین، زعفران</p></div><div class="item-price">80 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">دمنوش سرما خوردگی</span><p class="item-desc">آویشن، زنجبیل، دارچین، به لیمو</p></div><div class="item-price">120 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">چای ترش</span><p class="item-desc">چای ترش + عناب</p></div><div class="item-price">80/100 <span class="currency">هزار تومان</span></div></div>
+    </section>
+
+    <!-- کیک و شیک -->
+    <section id="cakes">
+        <h2 class="category-title"><i class="fas fa-cake-candles"></i> کیک و شیک</h2>
+        <div class="menu-item"><div class="item-details"><span class="item-name">کیک هویج گردو</span><p class="item-desc"></p></div><div class="item-price">170 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">کیک شکلاتی خیس</span><p class="item-desc">همراه با سس شکلات</p></div><div class="item-price">170 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">کوکی شکلاتی</span><p class="item-desc">شکلاتی</p></div><div class="item-price">30 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">تیرامیسو</span><p class="item-desc"></p></div><div class="item-price">160 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">شیک شکلات</span><p class="item-desc"></p></div><div class="item-price">250 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">شیک نوتلا</span><p class="item-desc"></p></div><div class="item-price">300 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">شیک بادام زمینی</span><p class="item-desc"></p></div><div class="item-price">300 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">شیک اسپرسو</span><p class="item-desc"></p></div><div class="item-price">300 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">شیک موز شکلات</span><p class="item-desc"></p></div><div class="item-price">300 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">شیک کره بیسکویت</span><p class="item-desc"></p></div><div class="item-price">300 <span class="currency">هزار تومان</span></div></div>
+    </section>
+
+    <!-- صبحانه -->
+    <section id="breakfast">
+        <h2 class="category-title"><i class="fas fa-bacon"></i> صبحانه و میان‌وعده</h2>
+        <div class="menu-item"><div class="item-details"><span class="item-name">صبحانه انگلیسی</span><p class="item-desc">تخم مرغ، لوبیا، سوسیس، بیکن</p></div><div class="item-price">690 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">املت کلاسیک</span><p class="item-desc">گوجه فرنگی تازه، تخم مرغ</p></div><div class="item-price">250 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">تست عسل و خامه</span><p class="item-desc">نان تست، عسل، خامه</p></div><div class="item-price">120 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">سوسیس تخم مرغ</span><p class="item-desc"></p></div><div class="item-price">200 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">سوسیس بندری</span><p class="item-desc"></p></div><div class="item-price">200 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">همبرگر</span><p class="item-desc"></p></div><div class="item-price">300 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">سیب ویژه</span><p class="item-desc">سیب زمینی، پنیر پیتزا، کالباس</p></div><div class="item-price">350 <span class="currency">هزار تومان</span></div></div>
+        <div class="menu-item"><div class="item-details"><span class="item-name">ساندویچ کالباس</span><p class="item-desc"></p></div><div class="item-price">120 <span class="currency">هزار تومان</span></div></div>
+    </section>
+</main>
+
+<!-- ========== حذف کامل فوتر ========== -->
+
+<!-- ========== script ========== -->
+<script>
+    // smooth scroll
+    function scrollToSection(id) {
+        const element = document.getElementById(id);
+        const headerOffset = 120;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+
+    // header class on scroll
+    window.onscroll = function() {
+        const header = document.getElementById("main-header");
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    };
+
+    // active nav link
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function() {
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            this.classList.add('active');
+        });
     });
-  </script>
+</script>
+
 </body>
 </html>
-

@@ -13,58 +13,54 @@
 body {
     margin: 0;
     font-family: sans-serif;
-    background: url("bg.jpg") center/cover no-repeat fixed;
+    background: radial-gradient(circle at top, #2b2b2b, #0f0f0f 60%);
     color: white;
 }
 
-.overlay {
-    min-height: 100vh;
-    background: rgba(0,0,0,0.78);
-    padding: 20px 12px 40px;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.logo {
-    width: 95px;
-    max-width: 30%;
-    margin-bottom: 8px;
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 25px 15px 40px;
 }
 
 h1 {
-    margin: 0;
+    text-align: center;
+    margin-bottom: 25px;
     font-size: 28px;
+    letter-spacing: 1px;
 }
 
 .menu {
-    max-width: 1000px;
-    margin: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
+    gap: 16px;
 }
 
-section {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
-    padding: 14px;
+.card {
+    background: linear-gradient(145deg, #1a1a1a, #111);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transition: 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.6);
 }
 
 h2 {
-    margin: 0 0 10px;
+    margin-top: 0;
     font-size: 18px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     padding-bottom: 6px;
 }
 
 ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 10px 0 0;
 }
 
 li {
@@ -78,76 +74,71 @@ li {
     h1 { font-size: 24px; }
     h2 { font-size: 16px; }
     li { font-size: 13px; }
-    .logo { width: 80px; }
 }
 </style>
 
 </head>
 <body>
 
-<div class="overlay">
-
-<header>
-    <img src="logo.png" class="logo">
+<div class="container">
     <h1>کافه تاج</h1>
-</header>
 
-<main class="menu">
+    <div class="menu">
 
-<section>
-<h2>قهوه ها</h2>
-<ul>
-<li>اسپرسو (تک / دبل)</li>
-<li>قهوه عربی</li>
-<li>قهوه شکلاتی</li>
-<li>میکس صد در صد روبوستا</li>
-<li>آمریکانو (تک / دبل)</li>
-<li>لاته</li>
-<li>کاپاچینو</li>
-<li>موکا</li>
-<li>شیر پسته زعفرانی</li>
-<li>هات چاکلت</li>
-<li>کاپوچینو</li>
-</ul>
-</section>
+        <div class="card">
+            <h2>قهوه ها</h2>
+            <ul>
+                <li>اسپرسو (تک / دبل)</li>
+                <li>قهوه عربی</li>
+                <li>قهوه شکلاتی</li>
+                <li>میکس صد در صد روبوستا</li>
+                <li>آمریکانو (تک / دبل)</li>
+                <li>لاته</li>
+                <li>کاپاچینو</li>
+                <li>موکا</li>
+                <li>شیر پسته زعفرانی</li>
+                <li>هات چاکلت</li>
+                <li>کاپوچینو</li>
+            </ul>
+        </div>
 
-<section>
-<h2>چای ها</h2>
-<ul>
-<li>چای ساده</li>
-<li>چای کرک</li>
-<li>شیر چای زعفرانی</li>
-<li>چای زعفران</li>
-<li>چای دارچین</li>
-<li>چای هل</li>
-<li>چای ترش</li>
-<li>چای سبز</li>
-<li>چای ماسالا</li>
-</ul>
-</section>
+        <div class="card">
+            <h2>چای ها</h2>
+            <ul>
+                <li>چای ساده</li>
+                <li>چای کرک</li>
+                <li>شیر چای زعفرانی</li>
+                <li>چای زعفران</li>
+                <li>چای دارچین</li>
+                <li>چای هل</li>
+                <li>چای ترش</li>
+                <li>چای سبز</li>
+                <li>چای ماسالا</li>
+            </ul>
+        </div>
 
-<section>
-<h2>دمنوش ها</h2>
-<ul>
-<li>زعفران (تک / دبل)</li>
-<li>گل گاوزبان</li>
-<li>بابونه</li>
-<li>دمنوش ورزشی</li>
-<li>آویشن</li>
-<li>لیموعناع</li>
-</ul>
-</section>
+        <div class="card">
+            <h2>دمنوش ها</h2>
+            <ul>
+                <li>زعفران (تک / دبل)</li>
+                <li>گل گاوزبان</li>
+                <li>بابونه</li>
+                <li>دمنوش ورزشی</li>
+                <li>آویشن</li>
+                <li>لیموعناع</li>
+            </ul>
+        </div>
 
-<section>
-<h2>کیک ها</h2>
-<ul>
-<li>کیک خیس شکلاتی</li>
-<li>کروسان</li>
-<li>تیناپ</li>
-</ul>
-</section>
+        <div class="card">
+            <h2>کیک ها</h2>
+            <ul>
+                <li>کیک خیس شکلاتی</li>
+                <li>کروسان</li>
+                <li>تیناپ</li>
+            </ul>
+        </div>
 
-</main>
+    </div>
 </div>
 
 </body>
